@@ -1,0 +1,28 @@
+{% extends 'layout.html' %}
+
+{% include 'adminNavbar.html' %}
+
+{% block content %}	
+
+<div class="container mt-5">
+		<h2>Order - {{status}}</h2>
+		<table class="table table-sm table-condensed table-striped">
+			<thead>
+				<th>Product</th>
+				<th>Quantity</th>
+			</thead>
+			<tbody>
+				{% for key,val in x.items() %}
+				<tr>
+					<td>{{val['name']}}</td>
+					<td>{{val['quantity']}}</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+		{% if status == 'Pending' %}
+		<a href="{{url_for('add_movements')}}" class="btn btn-sm btn-outline-success" style="border-radius: 30px;">Make Movement</a>
+		{% endif %}
+	</div>
+
+{% endblock content %}

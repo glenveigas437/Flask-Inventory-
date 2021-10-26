@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>INVENTORY | Easy Inventory Management</title>
+	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/'+'main.css')}}">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/fontawesome/4.7.0/css/fontawesome.min.css">
+</head>
+<body>
+	<div class="header">
+
+		<div class="container">
+			<div class="navbar">
+				<div class="logo">
+					<a href="{{url_for('homePage')}}"></a>
+				</div>
+			</div>	
+			<div class="row">
+				<div class="col-2">
+					<h1>Built to manage <br> your Products <br> With Ease!</h1>
+					<p>This Lightweight Inventory is built using Python and the Flask Framework. 
+					The concept lies similar to that of an e-commerce application, 
+					with the inventory management revolving around 2 entities the Admin and the Warehouse Supervisor.</p>
+					<a href="{{url_for('login')}}" class="btn">Explore Now &#8594;</a>	
+				</div>
+				<div class="col-2">
+					<img src="{{url_for('static', filename='images/layout/'+'inventory-banner.svg')}}">
+				</div>
+			</div>
+		</div>
+	</div>
+
+<!------Featured Categories------->
+	<div class="offer">
+		<div class="small-container">
+			<div class="row">
+				<div class="col-2">
+						<div class="row" style="margin-top: -10%;">
+							<img src="{{url_for('static', filename='images/layout/'+'pygal.png')}}">
+						</div>
+						<div class="row" style="margin-top: -40%;">
+							<img src="{{url_for('static', filename='images/layout/'+'Geo-p.png')}}">
+						</div>
+				</div>
+				<div class="col-2">
+					<br><br><br><br>
+					<p>With Python Libraries</p>
+					<h1>Pygal and Geopy</h1>
+					<small>Giving a sublime touch to your visualization power with Pygal to analyse the activities performed by the entities, also fused with minor add-on with 'Geopy' to calculate the distance between the HQ and Warehouse Locations</small>	
+				</div>	
+			</div>
+		</div>	
+	</div>
+
+<!------Featured Products------->
+	<div class="small-container">
+		<h2 class="title">Features To Look Out For</h2>
+			<div class="row">
+				<div class="col-4">
+					<img src="{{url_for('static', filename='images/layout/'+'AddLoc.png')}}">
+					<h4>Register Warehouse Location</h4>
+					<p>Now with a supervisor</p>
+				</div>
+				<div class="col-4">
+					<img src="{{url_for('static', filename='images/layout/'+'AddProdCart.png')}}">
+					<h4>Request For New Products</h4>
+					<p>From an array of products registered</p>
+				</div>
+				<div class="col-4">
+					<img src="{{url_for('static', filename='images/layout/'+'status.png')}}">
+					<h4>Status Report</h4>
+					<p>With Graphs and Numbers</p>
+				</div>
+				<div class="col-4">
+					<img src="{{url_for('static', filename='images/layout/'+'more.png')}}">
+					<h4>More Features</h4>
+					<p>Come checkout the app</p>
+				</div>
+			</div>
+	</div>
+
+<!-------Offer-------->
+	
+
+
+<!---------brands------->
+
+	<div class="brands">
+		<div class="small-container">
+			<h2 class="title">Key Ingredients</h2>
+			<div class="row">
+				<div class="col-5">
+					<img src="{{url_for('static', filename='images/layout/'+'python.png')}}">
+					
+				</div>
+				<div class="col-5">
+					<img src="{{url_for('static', filename='images/layout/'+'flaskLogo.png')}}">
+				</div>
+				<div class="col-5">
+					<img src="{{url_for('static', filename='images/layout/'+'sqlite.png')}}">
+					
+				</div>
+				<div class="col-5">
+					<img src="{{url_for('static', filename='images/layout/'+'html-flat.png')}}">
+					
+				</div>
+				<div class="col-5">
+					<img src="{{url_for('static', filename='images/layout/'+'JS.png')}}">
+				</div>
+			</div>
+			
+		</div>
+		
+	</div>
+
+
+<!------footer------->
+
+	<div class="footer">
+		<div class="container">
+			<div class="row">
+				<div class="footer-col-1">
+					<h3>View the source code here</h3>
+						<ul>
+                    		<a href="https://github.com/glenveigas437/Flask-Inventory-"><li>Github Repo</li></a>
+                    		<a href="http://inventoryapp.pythonanywhere.com"><li>Python Anywhere</li></a>
+                  		</ul>
+				</div>
+				<div class="footer-col-2">
+					<img src="{{url_for('static', filename='images/layout/'+'Invfooter.png')}}" style="margin-left: -20%;">
+				</div>
+				<div class="footer-col-3">
+					<h3>View Developer Profile</h3>
+					<ul>
+						<a href="https://github.com/glenveigas437"><li>Github</li></a>
+						<a href="https://www.linkedin.com/in/glenveigas/"><li>LinkedIn</li></a>
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+
+<!-------------JS for toggle menu-------->
+	<script>
+		var menuItems = document.getElementById("menuItems");
+		menuItems.style.maxHeight = "opx"
+
+		function menutoggle(){
+			if(menuItems.style.maxHeight == "0px"){
+				menuItems.style.maxHeight = "200px";
+			}
+			else{
+				menuItems.style.maxHeight = "0px";
+			}
+		}
+	</script>
+
+</body>
+</html>

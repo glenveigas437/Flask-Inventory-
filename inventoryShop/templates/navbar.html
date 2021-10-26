@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>INVENTORY | Easy Inventory Management</title>
+	<link rel="stylesheet" type="text/css" href="static/style.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/fontawesome/4.7.0/css/fontawesome.min.css">
+</head>
+<body>
+	<style>
+	.btn{
+		border-color: #ff523b;
+        color: #000;
+        
+	}
+
+	.btn:hover{
+        background: #000;
+    }
+    li, a{
+    	font-family: Poppins;
+    }
+	</style>
+
+	<div class="header">
+
+		<div class="container">
+			<div class="navbar" style="background: #FFF6D6;">
+				<div class="logo">
+					<a href="{{url_for('home')}}"><img src="{{url_for('static', filename='images/layout/'+'lg1s.png')}}"width="150px"></a>
+				</div>
+				<nav style="margin-top: 0.5%;">
+					{%if current_user.is_authenticated %}
+					<ul id="menuItems">
+						<li class="nav-item dropdown">
+					      	<a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size:15px" class="fa">{{current_user.name}}</a>
+					        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+					          <a class="dropdown-item" href="{{url_for('myOrders')}}">Orders</a>
+					          <a class="dropdown-item" href="{{url_for('myProfile')}}">Profile</a>
+					          <a class="dropdown-item" href="{{url_for('myStatus')}}">Status</a>
+					        </div>
+					      </li>
+					    <li class="nav-item">
+					    	<a href="{{url_for('locationlogout')}}" class="nav-link">Logout</a>
+					    </li>
+					    <li>
+					      	<a href="{{url_for('getCart')}}"><img src="{{url_for('static', filename='/images/layout/'+'cart.png')}}" width="30px" height="30px">({{session['requestCart']|length}})</a>
+					     </li>
+					    <li>
+					    <form class="form-inline my-2 my-lg-0" action="{{url_for('result')}}">
+			      			<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search", name="q">
+			      			<button class="btn btn-outline-info my-2 my-sm-0" type="submit" style="font-family: Poppins; border-radius: 30px; border-color: #ff523b; color: #000;">Search</button>
+			    		</form>
+			    		</li>
+			    	</ul>
+				</nav>
+	    			{% endif %}
+				<img src="static/images/layout/menu.png" class="menu-icon" onclick="menutoggle()">
+			</div>	
+		</div>
+	</div>
+
+
+
+
+<!-------------JS for toggle menu-------->
+	<script>
+		var menuItems = document.getElementById("menuItems");
+		menuItems.style.maxHeight = "opx"
+
+		function menutoggle(){
+			if(menuItems.style.maxHeight == "0px"){
+				menuItems.style.maxHeight = "200px";
+			}
+			else{
+				menuItems.style.maxHeight = "0px";
+			}
+		}
+	</script>
+
+</body>
+</html>
+
+
+

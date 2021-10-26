@@ -1,0 +1,77 @@
+{% extends 'layout.html' %}
+
+{% include 'adminNavbar.html' %}
+
+{% block content %}
+
+	
+	<div class="container mt-5">
+		<h2>Status for {{dateX}}</h2>
+		<form action="{{url_for('get_pdf')}}" method="post">
+            <button type="submit" class="btn btn-sm btn-outline-success" style="border-radius: 30px; font-family: Poppins;">Download Status</button>
+        </form>
+		<legend class="border-bottom mb-4">General Stats</legend>
+		<div class="row">
+			{% for key, value in cD.items() %}
+			<div class="col-md-2 mt-2">
+			<div class="card">
+				<h1 class="text-center" style="margin-bottom: 10px; margin-top: 10px; font-size:7vw;">{{value[1]}}</h1>
+				<div class="card-body">
+					<h5 class="text-center">{{value[0]}}</h5>
+				</div>
+			</div>
+		</div>
+		{% endfor %}
+		</div>
+		<br>
+		
+		<legend class="border-bottom mb-4">Detailed Stock Status</legend>
+			<table class="table table-sm table-condensed table-striped">
+				<thead>
+					<th>Location</th>
+					<th>Product</th>
+					<th>Quantity</th>
+				</thead>
+				<tbody>
+					{% for row in status_list %}
+					<tr>
+	            		<td>{{row.location}}</td>
+	            		<td>{{row.product}}</td>
+	            		<td>{{row.quantity}}</td>
+	        		</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+	
+
+
+	<div class="container">
+    	<legend class="border-bottom mb-4">Unallocated Items</legend>
+    		<div class="container" align="left">
+					<embed type="image/svg+xml;base64" src={{line_chart|safe}} style='max-width:800px;'/>
+	  		</div>
+    </div>  
+
+    <br>
+
+    {% if exc!=1 %}
+    <div class="container">
+    	<legend class="border-bottom mb-4">Location-wise Interaction</legend>
+    		<div class="container" align="left">
+					<embed type="image/svg+xml;base64" src={{pie_chart|safe}} style='max-width:800px;'/>
+	  		</div>
+    </div>
+
+    <br>
+
+    <div class="container">
+    	<legend class="border-bottom mb-4">Movement Record</legend>
+    		<div class="container" align="left">
+					<embed type="image/svg+xml;base64" src={{graph|safe}} style='max-width: 800px;'/>
+	  		</div>
+    </div>
+    {% endif %}  
+
+ </div>
+
+{% endblock content %}

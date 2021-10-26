@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>INVENTORY | Easy Inventory Management</title>
+	<link rel="stylesheet" type="text/css" href="static/style.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/fontawesome/4.7.0/css/fontawesome.min.css">
+</head>
+<body>
+	<div class="header">
+
+		<div class="container">
+			<div class="navbar" style="background: #FFF6D6;">
+				<div class="logo">
+					<a href="{{url_for('admin')}}"><img src="{{url_for('static', filename='images/layout/'+'lg1s.png')}}"width="150px"></a>
+				</div>
+				<nav>
+					<ul id="menuItems">
+						<li class="nav-item dropdown">
+					      	<a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size:15px" class="fa">Add</a>
+					        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+					          <a class="dropdown-item" href="{{url_for('addBrand')}}">Products</a>
+					          <a class="dropdown-item" href="{{url_for('add_movements')}}">Movements</a>
+					        </div>
+	     				</li>
+						<li class="nav-item dropdown">
+					      	<a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size:15px" class="fa">Edit</a>
+					        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+					          <a class="dropdown-item" href="{{url_for('brands')}}">Brand</a>
+					          <a class="dropdown-item" href="{{url_for('categories')}}">Category</a>
+					          <a class="dropdown-item" href="{{url_for('productList')}}">Product</a>
+					        </div>
+					      </li>
+						<li><a href="{{url_for('orderRequests')}}">Orders</a></li>
+						<li><a href="{{url_for('logout')}}">Logout</a></li>
+					</ul>
+				</nav>
+				<img src="static/images/layout/menu.png" class="menu-icon" onclick="menutoggle()">
+			</div>	
+		</div>
+	</div>
+
+
+<!-------------JS for toggle menu-------->
+	<script>
+		var menuItems = document.getElementById("menuItems");
+		menuItems.style.maxHeight = "0px"
+
+		function menutoggle(){
+			if(menuItems.style.maxHeight == "0px"){
+				menuItems.style.maxHeight = "200px";
+			}
+			else{
+				menuItems.style.maxHeight = "0px";
+			}
+		}
+	</script>
+
+</body>
+</html>

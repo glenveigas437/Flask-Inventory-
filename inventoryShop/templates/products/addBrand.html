@@ -1,0 +1,40 @@
+{% extends 'layout.html' %}
+
+{% include 'adminNavbar.html' %}
+
+{% block content %}
+
+
+<div class="container">
+	<div class="row">
+		<div class='col-md-3'></div>
+		<div class='col-md-6'>
+		{% include '_messages.html' %}
+		{% if brands %}
+		<h1 class='text-center mt-5' style="font-family: Poppins;">Add a Brand</h1>
+		<form action="" method=post>
+			<input type="text" name="brand" class='form-control'>
+			<button type="submit" value="Add Brand" class="btn btn-outline-info mt-2" style="margin-top: -50%;">Add Brand</button>
+		</form>
+		<a href="{{url_for('addCategory')}}" class="btn btn-outline-warning" style="margin-top: -100px; margin-left:135px; font-family: Poppins;">Skip to Add Category</a>
+		<a href="{{url_for('addProduct')}}" class="btn btn-outline-warning float-right" style="margin-top: -70px; font-family: Poppins;">Skip to Add Product</a>
+		{% else %}
+		<h1 class='text-center mt-5'>Add a Category</h1>
+		<form action="" method=post>
+			<input type="text" name="category" class='form-control'>
+			<button type="submit" value="Add Category" class="btn btn-outline-info mt-2">Add Category</button>
+		</form>
+		<a class="btn  btn-outline-warning" style="margin-top: -100px; margin-left:175px;" href="{{url_for('addBrand')}}">Back to Add Brand</a>
+		<a class="btn  btn-outline-warning float-right" style="margin-top: -70px;" href="{{url_for('addProduct')}}">Skip to Add Product</a>
+		{% endif %}
+	</div>
+	<div class="col-md-3"></div>
+</div>
+</div>
+
+<style>
+	.btn{
+		border-radius: 30px;
+	}
+</style>
+{% endblock content %}

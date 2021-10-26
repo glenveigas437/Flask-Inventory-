@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+
+{% include 'adminNavbar.html' %}
+
+{% block content %}
+
+
+
+<div class="container mt-5">
+		<h2 style="font-family: Poppins;">Registered Locations</h2>
+		<table class="table table-sm table-condensed">
+			<thead>
+				<th>Locations</th>
+				<th></th>
+			</thead>
+			<tbody>
+				{% for loc in location %}
+				<tr>
+					<td>{{loc.name}}</td>
+					<td><a href="{{url_for('locationProfile', id=loc.id)}}">Click to know more</a></td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+
+{% endblock content %}

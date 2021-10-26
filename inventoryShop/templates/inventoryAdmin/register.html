@@ -1,0 +1,65 @@
+{% extends 'layout.html' %}
+
+{% include 'navbarEntry.html' %}
+
+{% block content %}
+
+<style>
+    .btn{
+        border-color: #ff523b;
+        color: #000;
+        font-family: Poppins;
+        border-radius: 30px;
+    }
+    .btn:hover{
+        background: #000;
+    }
+    h4{
+        font-family: Poppins;
+    }
+    label, small{
+        font-family: Poppins;
+    }
+    li{
+    	font-family: Poppins;
+    }
+    .col-2{
+    	margin-left: -20%;
+    }
+    ul{
+        list-style-type: circle;
+    }
+</style>
+
+<div class="account-page">
+        <div class="container">
+        	{% include '_messages.html' %}
+			{% from "_formhelpers.html" import render_field %}
+            <div class="row">
+                <div class="col-2">
+                	<h4>Your day as an Admin</h4>
+                		<ul>
+                    		<li>Add/Modify products to the database</li>
+                    		<li>Approve product requests made by location supervisors</li>
+                    		<li>Update stock of each product in the HQ</li>
+                    		<li>Make Product Movements from One Location to Another</li>
+                  		</ul>
+                  	<h4>You can also</h4>
+                  		<ul>have a look at the status of your tasks performed each day</ul>
+                  		<ul>To Know more register now &#8594;</ul>
+                </div>    
+                <form method="post">
+                	{{ form.csrf_token }}
+                    <h4>Register Admin</h4>
+                        {{ render_field(form.username, class="form-control") }}
+	    				{{ render_field(form.email, class="form-control") }}
+	    				{{ render_field(form.password, class="form-control") }}
+	    				{{ render_field(form.confirm, class="form-control") }}
+	    				{{ render_field(form.address, class="form-control") }}
+                      	<button type="submit" class="btn btn-outline-primary">Register</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}

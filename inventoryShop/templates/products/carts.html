@@ -1,0 +1,45 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+{%  include 'navbar.html' %}
+<div class="container mt-4">
+	{% include '_messages.html' %}
+	<div class="row">
+		<div class="col-md-12">
+		<table class="table table-sm">
+			<thead>
+				<th>Sr</th>
+				<th>Name</th>
+				<th>Image</th>
+				<th>Quantity</th>
+				<th>Update</th>
+				<th>Delete</th>
+			</thead>
+			<tbody>
+				{% for key, product in session['requestCart'].items() %}
+				<tr>
+					<td>{{loop.index}}</td>
+					<td>{{product.name}}</td>
+					<td><img src="{{url_for('static', filename='images/'+product.image)}}" alt={{product.name}}, width="50", height="50"></td>
+					<form action="{{url_for('updatecart', code=key)}}" method="post">
+						<td> <input type="number" name="quantity" min="1" max="{{product.stock}}" value="{{product.quantity}}"></td>
+						<td><button type ="submit" class="btn btn-sm btn-outline-info" style="border-radius: 30px; margin-top: 1%;">Update</button></td>
+					</form>
+					<td><a href="{{url_for('deleteitem', id=key)}}" class="btn btn-sm btn-outline-danger" style="border-radius: 30px; margin-top: 1%;">Delete</a></td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+		<table class="table table-sm">
+			<tr>
+				<td>
+					<a href="{{url_for('get_order')}}" class="btn btn-outline-success" style="border-radius: 30px; border-color: green;">Proceed To Order</a>
+				</td>
+				<td><a href="{{url_for('clearcart')}}" class="btn btn-sm btn-outline-danger float-right" style="border-radius: 30px; border-color: red;">Clear Cart</a></td>
+			</tr>
+		</table>
+	</div>
+</div>
+</div>
+{% endblock content %}

@@ -1,0 +1,33 @@
+{% extends 'layout.html' %}
+
+{% include 'adminNavbar.html' %}
+
+{% block content %}	
+	
+	<div class="container mt-5">
+		<h2>Movement List</h2>
+		<table class="table table-sm table-condensed table-striped">
+			<thead>
+				<th>Sr No.</th>
+				<th>From</th>
+				<th>To</th>
+				<th>Product</th>
+				<th>Quantity</th>
+				<th>Date</th>
+			</thead>
+			<tbody>
+				{% for movement in movement_list %}
+				<tr>
+					<td>{{loop.index}}</td>
+					<td>{{movement.from_location.name}}</td>
+					<td>{{movement.to_location.name}}</td>
+					<td>{{movement.product.name}}</td>
+					<td>{{movement.quantity}}</td>
+					<td>{{movement.curr_time}}</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+
+{% endblock content %}

@@ -1,0 +1,25 @@
+{% extends 'layout.html' %}
+
+{% include 'navbar.html' %}
+
+{% block content %}	
+
+<div class="container mt-5">
+		<h2>Order</h2>
+		<table class="table table-sm table-condensed table-striped">
+			<thead>
+				<th>Product</th>
+				<th>Quantity</th>
+			</thead>
+			<tbody>
+				{% for key,val in x.items() %}
+				<tr>
+					<td>{{val['name']}}</td>
+					<td>{{val['quantity']}}</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+
+{% endblock content %}

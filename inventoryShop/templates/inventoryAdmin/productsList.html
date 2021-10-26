@@ -1,0 +1,38 @@
+{% extends 'layout.html' %}
+
+{% include 'adminNavbar.html' %}
+
+{% block content %}	
+	<div class="container mt-5">
+		<h2 style="font-family: Poppins;">Products</h2>
+		<table class="table table-sm table-condensed table-striped">
+			<thead>
+				<th>Sr No.</th>
+				<th>Product</th>
+				<th>Brand</th>
+				<th>Stock</th>
+				<th>Image</th>
+				<th>Edit</th>
+			</thead>
+			<tbody>
+				{% for prod in products %}
+				<tr>
+					<td>{{loop.index}}</td>
+					<td>{{prod.name}}</td>
+					<td>{{prod.brand.name}}</td>
+					<td>{{prod.stock}}</td>
+					<td><img src="{{url_for('static', filename='images/' + prod.image1)}}" width="50" height="40"></td>
+					<td><a href="{{url_for('updateProduct', id=prod.id)}}" class="btn btn-sm btn-outline-info" style="margin-top: 1%; border-radius: 30px">Edit</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+
+	<style>
+		a, h2, td{
+			font-family: Poppins;
+		}
+	</style>
+	
+{% endblock content %}

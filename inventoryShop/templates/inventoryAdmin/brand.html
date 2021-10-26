@@ -1,0 +1,49 @@
+{% extends 'layout.html' %}
+
+{% include 'adminNavbar.html' %}
+
+{% block content %}
+
+	<div class="container mt-5">
+		{% include '_messages.html' %}
+		{% if brands %}
+		<h2>Brands</h2>
+		{% else %}
+		<h2>Categories</h2>
+		{% endif %}
+		<table class="table table-sm table-condensed table-striped">
+			<thead>
+				<th>Sr No.</th>
+				<th>Brand</th>
+				<th>Edit</th>
+			</thead>
+			<tbody>
+				{% if brands %}
+				{% for brand in brands %}
+				<tr>
+					<td>{{loop.index}}</td>
+					<td>{{brand.name}}</td>
+					<td><a href="{{url_for('updateBrand', id=brand.id)}}" class="btn btn-sm btn-outline-info">Edit</td>
+				</tr>
+				{% endfor %}
+				{% else %}
+				{% for category in categories %}
+				<tr>
+					<td>{{loop.index}}</td>
+					<td>{{category.name}}</td>
+					<td><a href="{{url_for('updateCategory', id=category.id)}}" class="btn btn-sm btn-outline-info">Edit</td>
+				</tr>
+				{% endfor %}
+				{% endif %}
+			</tbody>
+		</table>
+	</div>
+
+	<style>
+		.btn{
+			border-radius: 30px;
+			margin-top: 1%;
+		}
+	</style>
+	
+{% endblock content %}

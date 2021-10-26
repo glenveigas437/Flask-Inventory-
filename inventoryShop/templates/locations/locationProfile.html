@@ -1,0 +1,65 @@
+{% extends 'layout.html' %}
+
+{% include 'navbar.html' %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+	<article class="media content-section">
+	    <div class="media-body">
+	      <div class="article-metadata">
+	      </div>
+	      <h1>{{current_user.name}}</h1>
+	      <h3>{{current_user.address}}</h3>
+	      <h4>Email: {{current_user.email}}</h4>
+	    </div>
+	</article>
+
+	<br>
+
+		<h2>Movement - To {{current_user.name}}</h2>
+		<table class="table table-sm table-condensed">
+			<thead>
+				<th>From</th>
+				<th>Product</th>
+				<th>Units</th>
+				<th>Time</th>
+			</thead>
+			<tbody>
+				{% for l in lmt %}
+				<tr>
+					<td>{{l.from_location.name}}</td>
+					<td>{{l.product.name}}</td>
+					<td>{{l.quantity}}</td>
+					<td>{{l.curr_time}}</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+
+		<br>
+		<br>
+
+		<h2>Movement - From {{current_user.name}}</h2>
+		<table class="table table-sm table-condensed">
+			<thead>
+				<th>To</th>
+				<th>Product</th>
+				<th>Units</th>
+				<th>Time</th>
+			</thead>
+			<tbody>
+				{% for l in lmf %}
+				<tr>
+					<td>{{l.to_location.name}}</td>
+					<td>{{l.product.name}}</td>
+					<td>{{l.quantity}}</td>
+					<td>{{l.curr_time}}</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+
+{% endblock content %}

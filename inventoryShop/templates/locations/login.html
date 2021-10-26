@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+
+{% include 'navbarEntry.html' %}
+
+{% block content %}
+
+<style>
+    *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    body{
+        background: rgb(255, 255, 255);
+    }
+    .row{
+        box-sizing: white;
+        border-radius: 30px;
+    }
+    img{
+        border-top-left-radius: 30px;
+        border-bottom-right-radius: 30px;
+    }
+    
+    .btn{
+        border-color: #ff523b;
+        color: #000;
+        font-family: Poppins;
+        border-radius: 30px;
+    }
+    .btn:hover{
+        background: #000;
+    }
+    h4{
+        font-family: Poppins;
+    }
+    label, small{
+        font-family: Poppins;
+    }
+</style>
+
+<div class="account-page">
+        <div class="container">
+            {% include '_messages.html' %}
+            {% from "_formhelpers.html" import render_field %}
+            <div class="row">
+                <div class="col-2">
+                    <h4 style="margin-left: 50px;">Not Location Supervisor?</h4>
+                    <a href="{{url_for('login')}}" class="btn btn-outline-success" style="margin-left: 50px;">Head to Admin Login &#8594;</a>
+                    <h4 style="margin-left: 50px;">Not Registered?</h4>
+                    <a href="{{url_for('location_register')}}" class="btn btn-outline-success" style="margin-left: 50px;">Head To Register Location &#8594;</a>
+                </div>    
+                <form method="post">
+                    {{form.csrf_token}}
+                    <h4>Location Supervisor Login</h4>
+                        {{ render_field(form.email, class="form-control") }}
+                        {{ render_field(form.password, class="form-control") }}
+                      <button type="submit" value="Login" class="btn btn-outline-primary">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}

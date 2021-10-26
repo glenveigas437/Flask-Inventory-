@@ -1,0 +1,62 @@
+{% extends 'layout.html' %}
+
+{% include 'navbar.html' %}
+
+{% block content %}
+
+
+<div class="container">
+	{% include '_messages.html' %}
+	<div class="row">
+		{% for product in products.items %}
+		<div class="col-md-3 mt-3">
+			<div class="card">
+				<img src="{{url_for('static', filename='images/'+product.image1)}}" alt="{{product.name}}" class="card-img-top" height="200">
+				<div class="card-body">
+					<h5 class="text-center">{{product.name}}</h5>
+					<p class="text-center">by {{product.brand.name}}</p>
+					<p class="text-center">In Stock: {{product.stock}}</p>
+				</div>
+				<div class="card-footer">
+					<a href="{{url_for('product_desc', id=product.id)}}" class="float-left btn btn-sm btn-outline-primary">Details</a>
+					<form action="{{url_for('addCart')}}" method="post">
+						<input type="hidden" name="product_id" value="{{product.id}}">
+						<input type="hidden" name="quantity" id="" value="1" min="1" max="{{product.stock}}">
+					<button type="submit" class="btn btn-sm btn-outline-warning float-right" style="margin-top: 15%;">Request Admin</button>
+					</form>
+				</div>
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+	<div class="row">
+		<div class="col text-center">
+			{% if products.has_prev %}
+			<a href="{{url_for('home', page=products.prev_num)}}" class="btn btn-info btn-sm mt-3">Prev</a>
+			{% endif %}
+			{% for page_num in products.iter_pages() %}
+			{% if page_num %}
+			{% if products.page == page_num %}
+			<a href="{{url_for('home', page=page_num)}}" class="btn btn-info btn-sm mt-3">{{page_num}}</a>
+			{% else %}
+			<a href="{{url_for('home', page=page_num)}}" class="btn btn-outline-info btn-sm mt-3">{{page_num}}</a>
+			{% endif %}
+			{% else %}
+			...
+			{% endif %}
+			{% endfor %}
+			{% if products.has_next %}
+			<a href="{{url_for('home', page=products.prev_next)}}" class="btn btn-info btn-sm mt-3">Next</a>
+			{% endif %}
+			
+		</div>
+	</div>
+</div>
+
+
+<style>
+	.btn{
+		border-radius: 30px;
+	}
+</style>
+{% endblock content %}
