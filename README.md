@@ -32,7 +32,7 @@ How to use/play with this web app?
 You can download the repository or simply do a ```git clone  <repo-name>``` from your command prompt or Linux Terminal and there you have the files on your local machine
 
 ### 1.2 Installation of pre-requisite libraries
-The package consists of a requirements.txt file, go to your cmd and hit command ```pip install -r requirements.txt``` and you have all the libraries installed
+The package consists of a [requirements.txt](https://github.com/glenveigas437/Flask-Inventory-/blob/main/requirements.txt) file, go to your cmd and hit command ```pip install -r requirements.txt``` and you have all the libraries installed
 
 ### 1.3 Running the application
 Hit the command ```python run.py``` for Windows and ```python3 run.py``` for Mac/Linux
