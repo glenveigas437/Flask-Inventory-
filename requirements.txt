@@ -1,0 +1,11 @@
+email_validator
+flask
+flask_bcrypt
+flask_login
+flask_msearch
+flask_reuploaded
+Flask-SQLAlchemy
+Flask_uploads
+Flask_wtf
+pdfkit
+geopy
