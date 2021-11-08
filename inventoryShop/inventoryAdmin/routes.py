@@ -393,6 +393,7 @@ def status():
 
     pie_chart = pygal.Pie()
     pie_chart.title = 'Location wise Interaction (in %)'
+    exc=1
     for key, value in locIntDict.items():
         try:
             pie_chart.add(key, round((value/interactiveSums)*100,2))
@@ -471,7 +472,8 @@ def get_pdf():
             locIntDict_data[Locations[i].name] = locIntDict_data.get(Locations[i].name, 0)+countsFrom
             countsTo=Movement.query.filter_by(to_location_id=Locations[i].id).count()
             locIntDict_data[Locations[i].name] = locIntDict_data.get(Locations[i].name, 0)+countsTo
-
+        
+        exc=1
         interactiveSums=sum(locIntDict_data.values())
         for key, value in locIntDict_data.items():
             try:
